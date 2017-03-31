@@ -39,12 +39,6 @@ namespace GadgeteerApp8
         public void ProgramStarted()
         {
             
-            
-
-
-
-
-   
             camera.PictureCaptured += new Camera.PictureCapturedEventHandler(Myfunc);
             ethernetJ11D.UseThisNetworkInterface();
             string[] dns = { "8.8.8.8", "8.8.4.4" };
@@ -52,11 +46,11 @@ namespace GadgeteerApp8
             ethernetJ11D.NetworkUp += NetUpH;
             ethernetJ11D.NetworkDown += NetDownH;
 
-            s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            EndPoint ep = new IPEndPoint(IPAddress.Parse("192.168.1.1"), 1500);
-            s.Connect(ep);
+            //s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            //EndPoint ep = new IPEndPoint(IPAddress.Parse("192.168.1.1"), 1500);
+            //s.Connect(ep);
 
-
+           
 
 
 
@@ -74,13 +68,8 @@ namespace GadgeteerApp8
         public void Myfunc(Camera sender, GT.Picture e)
         {
             //timer.Stop();
-
-            HTML=Encoding.UTF8.GetBytes( HTML.ToString()+"< img src = \"data:image/bmp,"+e.MakeBitmap().GetBitmap().ToString()+"\" width = \"100\" height = \"100\" />");
-
-
-
-                 //displayT35.SimpleGraphics.DisplayImage(e, 0, 0);
-                 Bitmap bmap = e.MakeBitmap();
+        //displayT35.SimpleGraphics.DisplayImage(e, 0, 0);
+          /*       Bitmap bmap = e.MakeBitmap();
             int Wcnt = 0, Bcnt = 0; float Tcnt = 0;
             int Hstart = 0, Hstop = bmap.Height;
             int Wstart = 0, Wstop = bmap.Width;
@@ -114,8 +103,8 @@ namespace GadgeteerApp8
 
             else {
                 displayT35.SimpleGraphics.DisplayText(" B: " + Pblack.ToString() + " W: " + Pwhite.ToString() + "\n", Resources.GetFont(Resources.FontResources.NinaB), Colors.Green, 10, 0);
-                displayT35.SimpleGraphics.DisplayImage(e, 0, 0);
-            }
+            */    displayT35.SimpleGraphics.DisplayImage(e, 0, 0);
+            //}
            // timer.Start();
         }
         public void timerFunc(GT.Timer timer)
@@ -127,7 +116,7 @@ namespace GadgeteerApp8
         public void NetUpH(GTM.Module.NetworkModule sender, GTM.Module.NetworkModule.NetworkState state)
         {
             displayT35.SimpleGraphics.DisplayText("Net up" , Resources.GetFont(Resources.FontResources.NinaB), Colors.Green, 10, 0);
-
+            camera.TakePicture();
 
 
         }
