@@ -107,7 +107,7 @@ namespace GadgeteerApp8
             }
             double x = Hstop * Wstart;
             float Pwhite = Wcnt / Tcnt;
-            float Pblack = Bcnt / Tcnt;
+         //   float Pblack = Bcnt / Tcnt;
 
             if (Pwhite >= 0.4 && Pblack >= 0.4)
                 displayT35.SimpleGraphics.DisplayText("Codice a barre rilevato\n", Resources.GetFont(Resources.FontResources.NinaB), Colors.Green, 10, 0);
